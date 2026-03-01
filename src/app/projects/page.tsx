@@ -1,18 +1,54 @@
 const projects = [
   {
     title: "Internal Banking LLM Assistant (RAG)",
-    desc: "Built a policy-aligned LLM assistant using GPT-4 + LangChain with citation-backed responses. Implemented retrieval, metadata filtering, and reranking to reduce hallucinations.",
-    tech: ["GPT-4", "LangChain", "Pinecone", "ChromaDB", "FastAPI"],
+    paragraph:
+      "Built an internal, policy-aligned LLM assistant to support banking servicing workflows by combining LLM reasoning with retrieval from approved knowledge sources. Designed a production RAG pipeline with chunking, embeddings, metadata-aware retrieval, and reranking to improve relevance while reducing hallucination risk. Implemented a citation-backed response format so answers are traceable to retrieved documents, supporting governance and reviewer confidence. Exposed the assistant through secure APIs and integrated it into application flows with clear escalation paths for sensitive or unsupported requests.",
+    impact:
+      "Reduced hallucination risk and improved trust by enforcing grounded, citation-backed responses in production workflows.",
+    tech: [
+      "LangChain",
+      "GPT-4 / Claude / Llama",
+      "Pinecone",
+      "ChromaDB",
+      "FastAPI",
+      "RESTful APIs",
+      "GraphQL",
+      "PostgreSQL",
+      "Docker",
+    ],
   },
   {
     title: "LLM Evaluation & Governance",
-    desc: "Designed evaluation suite for groundedness, citation accuracy, refusal correctness, and regression testing to ensure safe production deployments.",
-    tech: ["Python", "LLM Evaluation", "CI/CD"],
+    paragraph:
+      "Designed a governance-first evaluation approach for LLM applications focused on safety, correctness, and stability across releases. Built test coverage for retrieval quality, groundedness, citation accuracy, refusal behavior, and regression checks so production changes can be validated consistently. Standardized response schemas and logging so each output can be inspected with the underlying retrieval context and decision trail. Integrated automated checks into CI/CD to prevent quality regressions and enforce predictable behavior under edge cases.",
+    impact:
+      "Made LLM releases measurable and reviewable by adding repeatable evaluations that prevent regressions and unsafe behavior.",
+    tech: [
+      "Python",
+      "LangChain",
+      "PyTorch",
+      "TensorFlow",
+      "CI/CD",
+      "RAG Testing",
+      "Observability/Logging",
+    ],
   },
   {
     title: "Healthcare ML Models",
-    desc: "Implemented predictive models for readmission risk and anomaly detection on vitals/lab results with deployment-ready APIs.",
-    tech: ["LightGBM", "Random Forest", "FastAPI/Flask", "AWS SageMaker"],
+    paragraph:
+      "Delivered ML solutions for healthcare-style use cases such as readmission risk prediction and anomaly detection on vitals/lab trends. Built feature engineering for time-series patterns and integrated structured clinical data to improve signal quality for downstream decisioning. Implemented model training workflows and exposed predictions through deployment-ready APIs for integration into dashboards or operational tools. Added validation and monitoring practices to support reliability across data shifts and real-world usage.",
+    impact:
+      "Improved decision support by turning complex clinical signals into reliable, deployable model outputs.",
+    tech: [
+      "LightGBM",
+      "Random Forest",
+      "PyTorch",
+      "TensorFlow",
+      "FastAPI/Flask",
+      "AWS SageMaker",
+      "Airflow",
+      "PostgreSQL",
+    ],
   },
 ];
 
@@ -37,7 +73,15 @@ export default function ProjectsPage() {
               className="rounded-2xl border border-slate-200 p-6 shadow-sm"
             >
               <h2 className="text-xl font-semibold">{p.title}</h2>
-              <p className="mt-2 text-sm text-slate-700">{p.desc}</p>
+
+              <p className="mt-3 text-sm text-slate-700 leading-7">
+                {p.paragraph}
+              </p>
+
+              {/* Impact line */}
+              <p className="mt-3 text-sm font-semibold text-slate-900">
+                Impact: <span className="font-medium text-slate-700">{p.impact}</span>
+              </p>
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {p.tech.map((t) => (

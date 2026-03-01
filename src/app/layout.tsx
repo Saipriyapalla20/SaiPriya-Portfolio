@@ -1,9 +1,15 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Sai Priya Palla | Portfolio",
-  description: "AI/ML Engineer Portfolio",
+  description: "AI/ML Engineer & Data Scientist Portfolio",
 };
 
 export default function RootLayout({
@@ -13,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-white text-slate-900">
+      <body className={`${inter.className} bg-white text-slate-900`}>
         {/* Navbar */}
         <header className="border-b border-slate-200">
           <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -31,6 +37,9 @@ export default function RootLayout({
               <a href="/about" className="hover:text-slate-900">
                 About
               </a>
+              <a href="/resume" className="hover:text-slate-900">
+                Resume
+              </a>
               <a
                 href="https://www.linkedin.com/in/saipriyapalla"
                 target="_blank"
@@ -43,7 +52,6 @@ export default function RootLayout({
           </div>
         </header>
 
-        {/* Page content */}
         {children}
       </body>
     </html>
